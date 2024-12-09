@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CertiPortal | Certificações</title>
+  <link rel="icon" href="imagens/logo.png" type="image/png">
+  <link rel="stylesheet" href="style-navegacao.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script defer src="script-navegacao.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <header>
+    <img src="imagens/logo.gif" alt="CertiPortal Logo" id="site-logo">
+    <nav class="menu-nav">
+      <ul>
+        <li><a href="index-lobby.html">Home</a></li>
+        <li><a href="index-comoadquirir.html">Como Adquirir</a></li>
+        <li><a href="index-navegacao.html">Certificações</a></li>
+        <li><a href="index-planodeacao.html">Plano de Ação</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <hr class="divider">
+
+  <section class="search-section">
+    <input type="text" id="search-bar" placeholder="Busque por certificações...">
+    <button id="search-btn">Pesquisar</button>
+  </section>
+
+  <section class="filter-section">
+    <label for="area-filter">Filtrar:</label>
+    <select id="area-filter">
+      <option value="all">Todas</option>
+    </select>
+  </section>
+
+
+  <section id="certifications-list" class="cards-container">
+  </section>
+
+  <div id="popup-panel">
+    <button id="close-panel">Fechar</button>
+    <div class="popup-content">
+      <h3 id="popup-title"></h3>
+      <p><strong>Provedor:</strong> <span id="popup-provider"></span></p>
+      <p><strong>Nível:</strong> <span id="popup-nivel"></span></p>
+      <p><strong>Área:</strong> <span id="popup-area"></span></p>
+      <p><strong>Descrição:</strong> <span id="popup-description"></span></p>
+      <p><strong>Requisitos:</strong> <span id="popup-requirements"></span></p>
+      <p><strong>Custo:</strong> <span id="popup-cost"></span></p>
+      <p><strong>Informações do Exame:</strong> <span id="popup-exam-info"></span></p>
+    </div>
+  </div>
+</body>
+</html>

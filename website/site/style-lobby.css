@@ -1,0 +1,117 @@
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  color: #333; 
+  font-size: 14px;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #004080; 
+  color: white; 
+  padding: 5px 20px; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  position: relative;
+  height: 80px; 
+}
+
+#site-logo {
+  width: 200px; 
+  height: auto; 
+}
+
+/* Menu da página */
+.menu-nav ul {
+  list-style-type: none; 
+  display: flex; 
+  margin: 0;
+  padding: 0;
+}
+
+.menu-nav li {
+  position: relative;
+  margin-left: 30px; 
+}
+
+.menu-nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px; 
+  padding: 10px 18px;
+  transition: background-color 0.3s ease; 
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.menu-nav a:hover {
+  color: #87cefa; 
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin: 0;
+}
+
+/* Seção Principal */
+.main-content {
+  display: flex; 
+  max-width: 1200px;
+  margin: 100px auto; 
+  padding: 20px;
+}
+
+/* Conteudo da parte esquerda */
+.left-content {
+  flex: 1; 
+  padding-right: 20px;
+  margin-top: 8px; 
+}
+
+.left-content h2 {
+  font-size: 2.8em;
+  margin: 0 0 10px; 
+  color: #004080; 
+}
+
+.left-content p {
+  font-size: 1.3em; 
+  text-align: justify; 
+}
+
+/* Botão do lobby */
+.discover-btn {
+  display: inline-block; 
+  padding: 8px 16px; 
+  background-color: #004080;
+  color: white; 
+  border-radius: 8px; 
+  border: none; 
+  font-size: 1em; 
+  text-decoration: none; 
+  margin-top: 10px; 
+  transition: background-color 0.3s;
+}
+
+.discover-btn:hover {
+  background-color: #0059b3; 
+}
+
+/* Conteúdo da parte direita */
+.right-content {
+  flex: 1;
+  margin-top: -30px; 
+}
+
+.featured-image {
+  width: 105%; 
+  height: auto; 
+  border-radius: 8px;
+  margin-left: 20px;
+  margin-top: -70px; 
+}
