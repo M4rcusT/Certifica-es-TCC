@@ -6,7 +6,7 @@ body {
     color: #333;
 }
 
-/* Cabeçalho */
+/* Primeira parte do Menu da página*/
 header {
     background-color: #004080;
     color: white;
@@ -17,12 +17,22 @@ header {
     height: 80px;
 }
 
-#site-logo {
-    width: 200px;
-    height: auto;
+li{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    font: bold;
+  }
+
+.dashed {
+    text-decoration: dashed;
 }
 
-/* Menu principal */
+#site-logo {
+    width: 250px;
+    height: 100%;
+}
+
+/* Segunda parte do Menu da página */
 .menu-nav ul {
     list-style-type: none;
     display: flex;
@@ -50,19 +60,22 @@ header {
 }
 
 
-.divider {
+.divisor {
     border: none;
-    height: 1px;
-    background-color: #ddd;
+    height: 3px;
+    background-color: #070707;
+    margin: 0;
 }
 
-.main-content {
+.container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    filter: drop-shadow(0 0px 2px #ffa600);
+
 }
 
 /* Títulos */
@@ -82,7 +95,11 @@ h2 {
     font-weight: 700;
 }
 
-/* Dispositivos móveis */
+.menu-toggle {
+    display: none;
+}
+
+/* Conficurações para a tela acompanhar o tamanho correto em dipositivos pequenos */
 @media (max-width: 768px) {
     .menu-nav ul {
         flex-direction: column;
@@ -105,4 +122,117 @@ h2 {
     h2 {
         font-size: 20px;
     }
+
+    .menu-nav ul {
+        flex-direction: column;
+        display: none;
+        background-color: #333;
+        width: 100%;
+        padding: 10px 0;
+        position: relative;
+        top: 50px;
+        left: 0;
+    }
+
+    .container.absolute{
+        margin-top: 300px;
+
+    }
+
+    .menu-nav ul.active {
+        display: flex;
+    }
+
+    .menu-nav li {
+        margin: 10px 0;
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+
+    .menu-nav ul {
+        flex-direction: column;
+        display: none;
+        background-color: #333;
+        width: 100%;
+        padding: 10px 0;
+        position: absolute;
+        top: 50px;
+        left: 0;
+    }
+
+    .menu-nav ul.active {
+        display: flex;
+    }
+
+    .menu-nav li {
+        margin: 10px 0;
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+
 }
+
+#site-logo {
+    width: 250px;
+    height: 100%;
+}
+
+@keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Animação - Entrada dos textos da direita para a esquerda */
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .artigo-esquerdo {
+    animation: slideInLeft 1s ease-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+  
+  .artigo-direito {
+    animation: slideInRight 1s ease-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+  
+
+

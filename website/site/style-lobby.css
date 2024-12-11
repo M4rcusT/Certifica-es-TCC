@@ -7,7 +7,7 @@ body {
   font-size: 14px;
 }
 
-/* Cabeçalho */
+/* Primeira parte do Menu da página*/
 header {
   background-color: #004080; 
   color: white; 
@@ -20,11 +20,11 @@ header {
 }
 
 #site-logo {
-  width: 200px; 
-  height: auto; 
+  width: 250px;
+  height: 100%;
 }
 
-/* Menu da página */
+/* Segunda parte do Menu da página */
 .menu-nav ul {
   list-style-type: none; 
   display: flex; 
@@ -51,41 +51,44 @@ header {
   color: #87cefa; 
 }
 
-.divider {
+.divisor {
   border: none;
-  height: 1px;
-  background-color: #ddd;
+  height: 3px;
+  background-color: #070707;
   margin: 0;
 }
 
 /* Seção Principal */
-.main-content {
+.container {
   display: flex; 
   max-width: 1200px;
-  margin: 100px auto; 
+  margin: 150px auto; 
   padding: 20px;
+  height: 90%;
 }
 
 /* Conteudo da parte esquerda */
-.left-content {
+.container-esq {
   flex: 1; 
   padding-right: 20px;
-  margin-top: 8px; 
+  margin-top: 72px; 
+  height: 100%;
 }
 
-.left-content h2 {
+.container-esq h2 {
   font-size: 2.8em;
   margin: 0 0 10px; 
-  color: #004080; 
+  color: #004080;
+  height: 100%; 
 }
 
-.left-content p {
+.container-esq p {
   font-size: 1.3em; 
   text-align: justify; 
 }
 
 /* Botão do lobby */
-.discover-btn {
+.btn-descobrir {
   display: inline-block; 
   padding: 8px 16px; 
   background-color: #004080;
@@ -98,20 +101,157 @@ header {
   transition: background-color 0.3s;
 }
 
-.discover-btn:hover {
+.btn-descobrir:hover {
   background-color: #0059b3; 
 }
 
-/* Conteúdo da parte direita */
-.right-content {
+/* Conteúdo do container da direita */
+.container-dir {
   flex: 1;
   margin-top: -30px; 
+  height: 100%;
 }
 
-.featured-image {
-  width: 105%; 
+.imagem {
+  width: 120%; 
   height: auto; 
   border-radius: 8px;
   margin-left: 20px;
   margin-top: -70px; 
+}
+
+.menu-toggle {
+  display: none;
+}
+
+li{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  font: bold;
+}
+
+.menu-nav ul.absolute {
+  position: absolute;
+  top: 80px;  
+  left: 0;
+  opacity: 100%;
+}
+
+/* Conficurações para a tela acompanhar o tamanho correto em dipositivos pequenos */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  #site-logo {
+    width: 120px;
+    margin-bottom: 10px;
+  }
+
+  .menu-nav ul {
+    display: none;
+  }
+
+  .menu-nav ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .container {
+    flex-direction: column;
+    margin: 50px auto;
+  }
+
+  .container-esq {
+    padding-right: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .imagem {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+
+  .menu-nav ul {
+      flex-direction: column; 
+      display: none; 
+      background-color: #333;
+      width: 100%;
+      padding: 10px 0;
+      position: absolute;
+      top: 50px; 
+      left: 0;
+  }
+
+  .menu-nav ul.active {
+      display: flex; 
+  }
+
+  .menu-nav li {
+      margin: 10px 0;
+      margin-left: 0; 
+  }
+
+  .menu-toggle {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+  }
+}
+
+/* Conficurações para a tela acompanhar o tamanho correto em dipositivos medios */
+@media (max-width: 1366px) {
+  .container {
+    display: flex; 
+    max-width: 1100px;
+    margin: 50px auto; 
+    padding: 20px;
+    height: 90%;
+  }
+}
+
+/* Animação de entrada(por baixo) da imagem da direita */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.imagem {
+  animation: slideInUp 1s ease-out; 
+  opacity: 0; 
+  animation-fill-mode: forwards; 
+}
+
+/* Animação de entrada(por cima) do texto da esquerda */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.container-esq {
+  animation: slideInDown 1s ease-out;
+  opacity: 0; 
+  animation-fill-mode: forwards; 
 }

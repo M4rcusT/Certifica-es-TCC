@@ -2,18 +2,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchBar = document.getElementById("search-bar");
     const searchBtn = document.getElementById("search-btn");
     const cardsContainer = document.getElementById("certifications-list");
+    
     const apiUrl = "http://localhost:3000/certificacoes";
 
     const popupPanel = document.getElementById("popup-panel");
     const closePanelBtn = document.getElementById("close-panel");
-    const areaFilter = document.getElementById("area-filter"); 
+    const areaFilter = document.getElementById("area-filter");
 
-    let certifications = []; 
-    let areas = new Set(); 
+    let certifications = [];
+    let areas = new Set();
 
+    // Puxando as certificações da API
     async function fetchCertifications() {
         try {
             const response = await fetch(apiUrl);
+
 
             if (!response.ok) {
                 console.error("Erro ao buscar dados da API:", response.status);
@@ -21,19 +24,22 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const data = await response.json();
+            
+            // Verificando os dados recebidos e analisa se não estão vazios 
             if (Array.isArray(data) && data.length) {
                 certifications = data.sort((a, b) => a.name.localeCompare(b.name));
-                areas = new Set(certifications.map(cert => cert.area))
-                populateAreaFilter();
+                areas = new Set(certifications.map(cert => cert.area));
+                populateAreaFilter(); 
                 renderCards(certifications);
             } else {
-                console.warn("Nenhum dado válido foi retornado pela API.");
+                console.warn("Nenhuma certificação foi retornada pela API.");
             }
         } catch (error) {
             console.error("Erro ao buscar dados da API:", error);
         }
     }
 
+    // Preenchendo o filtro de áreas
     function populateAreaFilter() {
         areaFilter.innerHTML = '<option value="all">Todas as Áreas</option>';
         areas.forEach(area => {
@@ -44,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Criação dos cards na página
     function renderCards(filteredCertifications) {
         cardsContainer.innerHTML = "";
         filteredCertifications.forEach(cert => {
@@ -57,10 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button class="details-btn">Ver Mais</button>
             `;
             cardsContainer.appendChild(card);
+            
             card.querySelector(".details-btn").addEventListener("click", () => showDetails(cert.id));
         });
     }
 
+    // Exibição dos detalhes das certificações em popup
     window.showDetails = function (id) {
         const cert = certifications.find(c => c.id === id);
         if (!cert) {
@@ -76,6 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("popup-requirements").textContent = cert.requirements || 'N/A';
         document.getElementById("popup-cost").textContent = cert.cost || 'N/A';
         document.getElementById("popup-exam-info").textContent = cert.exam_info || 'N/A';
+        document.getElementById("popup-material").textContent = cert.material || 'N/A';
+        document.getElementById("popup-link").textContent = cert.link || 'N/A';
 
         popupPanel.classList.add("open");
     };
@@ -84,18 +95,22 @@ document.addEventListener("DOMContentLoaded", function () {
         popupPanel.classList.remove("open");
     });
 
+    // Filtrando as certificações digitando na barra de pesquisa
     searchBar.addEventListener("input", function () {
-        filterAndRender();
+        filterAndRender();  // Chama a função de filtro e renderização
     });
 
+    // Filtrando as certificações pela seleção de filtro de área
     areaFilter.addEventListener("change", function () {
         filterAndRender();
     });
 
+    // Filtragem das certificações na pesquisa e no filtro de área selecionado
     function filterAndRender() {
         const query = searchBar.value.toLowerCase();
-        const selectedArea = areaFilter.value;
+        const selectedArea = areaFilter.value; 
 
+        // Analise dos filtro com base na pesquisa e na área
         const filteredCertifications = certifications.filter(cert => {
             const matchesSearch = cert.name.toLowerCase().includes(query);
             const matchesArea = selectedArea === "all" || cert.area === selectedArea;
